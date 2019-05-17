@@ -22,7 +22,7 @@ public class ClientUserApplication {
 
 	@RequestMapping("/user")
 	public String home(@RequestParam(value = "name", defaultValue = "Jerry") String name) {
-		return "hello, user " + name + " welcome" + port;
+		return "hello, user " + name + " welcome " + port;
 	}
 
 }
