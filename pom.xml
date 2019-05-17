@@ -21,6 +21,7 @@
 		<module>server-master</module>
 		<module>client-user</module>
 		<module>server-feign</module>
+		<module>server-zuul</module>
 	</modules>
 
 	<properties>

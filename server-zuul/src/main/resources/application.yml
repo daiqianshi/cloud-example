@@ -1,0 +1,26 @@
+server:
+  port: 8769
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: server-zuul
+zuul:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+  routes:
+    api-a:
+      path: /api-a/**
+      serviceId: server-ribbon
+    api-b:
+      path: /api-b/**
+      serviceId: server-feign
+
+ribbon.eureka.enabled: false
+server-ribbon:
+  ribbon:
+    listOfServers: 127.0.0.1:8762,127.0.0.1:8763
