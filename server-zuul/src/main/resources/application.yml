@@ -20,7 +20,9 @@ zuul:
       path: /api-b/**
       serviceId: server-feign
 
-ribbon.eureka.enabled: false
+ribbon:
+  eureka:
+    enabled: false
 server-ribbon:
   ribbon:
-    listOfServers: 127.0.0.1:8762,127.0.0.1:8763
+    listOfServers: localhost:8764
