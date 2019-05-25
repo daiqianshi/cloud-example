@@ -1,15 +1,46 @@
 server:
-  port: 8763
+  port: 8762
 
 spring:
   application:
     name: client-user
+  cloud:
+    client:
+      ip-address: 127.0.0.1
+  #  config:
+  #    label: master
+  #    profile: dev
+      #uri: http://localhost:8888/
+  #    discovery:
+  #      enabled: true
+  #      service-id: server-config
+    bus:
+      trace:
+        enabled: true
+      enabled: true
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 eureka:
+  instance:
+    prefer-ip-address: true
+    #该实例注册到服务中心的唯一ID
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     serviceUrl:
+      #与Eureka注册服务中心的通信zone和url地址
       defaultZone: http://localhost:8761/eureka/
 
+#放开actuator端口访问限制
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: bus-refresh
 
 
 

@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    config:
+      label: master
+      profile: dev
+      #uri: http://localhost:8888/
+      discovery:
+        enabled: true
+        service-id: server-config
+    bus:
+      trace:
+        enabled: true
+      enabled: true

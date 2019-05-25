@@ -2,9 +2,28 @@ server:
   port: 8764
 
 eureka:
+  instance:
+    prefer-ip-address: true
+    #该实例注册到服务中心的唯一ID
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     serviceUrl:
+      #与Eureka注册服务中心的通信zone和url地址
       defaultZone: http://localhost:8761/eureka/
 spring:
   application:
     name: service-ribbon
+  cloud:
+    client:
+      ip-address: 127.0.0.1
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+  #同一台实例最大重试次数,不包括首次调用
+  MaxAutoRetries: 1
+  #重试负载均衡其他的实例最大重试次数,不包括首次调用
+  MaxAutoRetriesNextServer: 1
+  #是否所有操作都重试
+  OkToRetryOnAllOperations: false
+

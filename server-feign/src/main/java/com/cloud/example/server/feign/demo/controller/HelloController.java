@@ -20,7 +20,7 @@ public class HelloController {
     private HelloService helloService;
 
     @RequestMapping(value = "hello")
-    public String hello(@RequestParam String name) {
+    public String hello(@RequestParam(value = "name") String name) {
         return helloService.hello(name);
     }
 }

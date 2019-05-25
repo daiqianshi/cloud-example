@@ -4,6 +4,7 @@ import com.cloud.example.server.feign.demo.service.impl.HelloServiceImpl;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @ClassName service
@@ -15,5 +16,5 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface HelloService {
 
     @RequestMapping(value = "/user",method = RequestMethod.GET)
-    public String hello(String name);
+    public String hello(@RequestParam(value = "name") String name);
 }
