@@ -12,7 +12,7 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 spring:
   application:
-    name: service-ribbon
+    name: server-ribbon
   cloud:
     client:
       ip-address: 127.0.0.1

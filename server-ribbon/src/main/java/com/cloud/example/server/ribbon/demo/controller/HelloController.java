@@ -24,4 +24,9 @@ public class HelloController {
     public String hello(@RequestParam String name) {
         return helloService.hello(name);
     }
+
+    @RequestMapping(value = "ignore")
+    public String ignore(@RequestParam String name) {
+        return "ignore";
+    }
 }

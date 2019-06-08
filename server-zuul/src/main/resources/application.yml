@@ -29,16 +29,29 @@ spring:
       probability : 1
 
 zuul:
+  ignoredServices: server-ribbon
+  ignoredPatterns: /**/ignore/**
   host:
     connect-timeout-millis: 60000
     socket-timeout-millis: 60000
   routes:
     api-a:
+      #服务映射的路径
       path: /api-a/**
+      #路径
+      #url: http://localhost:8764/
+      #Eureka注册中心的服务的名称
       serviceId: server-ribbon
     api-b:
+      #服务映射的路径
       path: /api-b/**
+      #Eureka注册中心的服务的名称#
       serviceId: server-feign
+#    api-c:
+        #服务映射的路径
+#        path: /api-c/**
+        #serviceId名称
+#        serviceId: users
 
 hystrix:
   command:
@@ -46,10 +59,13 @@ hystrix:
       execution:
         isolation:
           thread:
+            #hystrix超时时间
             timeoutInMilliseconds: 60000
-ribbon:
-  eureka:
-    enabled: false
-server-ribbon:
-  ribbon:
-    listOfServers: localhost:8764
+# 在Ribbon中禁用Eureka使用
+#ribbon:
+#  eureka:
+#    enabled: false
+#users:
+#  ribbon:
+#    listOfServers: http://localhost:8762/,http://localhost:8763/
+# ribbon
